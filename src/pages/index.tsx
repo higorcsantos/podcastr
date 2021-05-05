@@ -18,6 +18,8 @@ type Episode =
     url: string
   }
   import styles from "./home.module.scss";
+import { useContext } from "react";
+import { PlayerContext } from "../contexts/PlayerContext";
 
 type HomeProps = {
   latestEpisodes: Episode[];
@@ -25,6 +27,7 @@ type HomeProps = {
 }
 
 export default function Home({latestEpisodes,allEpisodes}: HomeProps) {
+  const {play} = useContext(PlayerContext)
   return (
     <div className={styles.homepage}>
     <section className={styles.latestEpisodes}>
@@ -51,7 +54,7 @@ export default function Home({latestEpisodes,allEpisodes}: HomeProps) {
             </div>
 
             <button type="button">
-              <img src="/play-green.svg" alt="Tocar episódio"/>
+              <img src="/play-green.svg" alt="Tocar episódio" onClick={() => play(episode)}/>
             </button>
           </li>
         ))}
@@ -95,7 +98,7 @@ export default function Home({latestEpisodes,allEpisodes}: HomeProps) {
                 <td>{episode.durationAsString}</td>
                 <td>
                   <button type="button">
-                    <img src="/play-green.svg" alt="Tocar episódio" />
+                    <img src="/play-green.svg" alt="Tocar episódio" onClick={() => play(episode)}/>
                   </button>
                 </td>
               </tr>
