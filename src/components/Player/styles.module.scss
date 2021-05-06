@@ -40,6 +40,26 @@
     align-items: center;
     justify-content: center;
 }
+.currentEpisode{
+    text-align: center;
+    
+    img{
+        border-radius: 1.5rem;
+    }
+    strong{
+        display: block;
+        margin-top: 2rem;
+        font: 600 1.25rem Lexend,sans-serif;
+        line-height: 1.75rem;
+    }
+    span{
+        display: block;
+        margin-top: 1rem;
+        opacity: 0.6;
+        line-height: 1.5rem;
+    }
+
+}
 .progress{
     display: flex;
     align-items: center;
@@ -70,5 +90,21 @@
         background: transparent;
         border: 0;
         font-size: 0;
+        transition: filter 0.2s;
+
+        &:disabled{
+            cursor: not-allowed;
+        }
+        &:hover:not(:disabled){
+            filter: brightness(0.6);
+        }
+        &.playButton{
+            border-radius: 1rem;
+            background: var(--purple-400);
+            transition: filter 0.2s;
+            &:hover{
+               filter: brightness(0.95) 
+            }
+        }   
     }
 }
